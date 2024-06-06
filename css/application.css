@@ -278,6 +278,31 @@ select {
     cursor: pointer; /* סמן יד */
 }
 
+.reset-btn {
+    
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* הגדרת האנימציה */
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* החיבור של האנימציה לכפתור */
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
 #logoutBtn:hover {
     background: #5aafa2; /* שינוי צבע הרקע לריחוף */
 }

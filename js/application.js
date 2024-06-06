@@ -194,57 +194,61 @@ document.addEventListener("DOMContentLoaded", () => {
         gameActive = true; // עדכון מצב המשחק כפעיל כברירת מחדל לאחר התחלה מחדש
         startTimer(gameDuration); // התחלת שעון העצר
         removeBlinkAnimation(); // הסרת האנימציה כאשר המשחק מתחיל מחדש
-    }
-
-    resetBtn.addEventListener("click", () => {
+        }
+        
+        resetBtn.addEventListener("click", () => {
         clearInterval(countdown);
         resetGame();
-    });
-
-    difficultySelect.addEventListener("change", () => {
+        });
+        
+        resetBtn.addEventListener("animationend", () => {
+        resetBtn.classList.remove("blink");
+        });
+        
+        difficultySelect.addEventListener("change", () => {
         clearInterval(countdown);
         resetGame();
-    });
-
-    createBoard();
-    
-    // פונקציית הניתוק
-    function logout() {
+        });
+        
+        createBoard();
+        
+        // פונקציית הניתוק
+        function logout() {
         localStorage.removeItem('currentUser');
         window.location.href = "landing.html"; // הנחיית המשתמש חזרה לעמוד ההתחברות
-    }
-
-    document.getElementById('logoutBtn').addEventListener('click', logout);
-
-    const instructionsBtn = document.getElementById('instructionsBtn');
-    const instructionsModal = document.getElementById('instructionsModal');
-    const closeBtn = document.getElementsByClassName('close')[0];
-
-    instructionsBtn.addEventListener('click', () => {
-        instructionsModal.style.display = 'block';
-    });
-
-    closeBtn.addEventListener('click', () => {
-        instructionsModal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target == instructionsModal) {
-            instructionsModal.style.display = 'none';
         }
-    });
-
-    // פונקציה להוספת אנימציה לכפתור
-    function addBlinkAnimation() {
+        
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        
+        const instructionsBtn = document.getElementById('instructionsBtn');
+        const instructionsModal = document.getElementById('instructionsModal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        
+        instructionsBtn.addEventListener('click', () => {
+        instructionsModal.style.display = 'block';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+        instructionsModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (event) => {
+        if (event.target == instructionsModal) {
+        instructionsModal.style.display = 'none';
+        }
+        });
+        
+        // פונקציה להוספת אנימציה לכפתור
+        function addBlinkAnimation() {
         resetBtn.classList.add("blink");
-    }
-
-    // פונקציה להסרת אנימציה מהכפתור
-    function removeBlinkAnimation() {
+        }
+        
+        // פונקציה להסרת אנימציה מהכפתור
+        function removeBlinkAnimation() {
         resetBtn.classList.remove("blink");
-    }
-
-    // התחלת המשחק והוספת אנימציה לכפתור ברירת המחדל
-    addBlinkAnimation();
-});
-
+        }
+        
+        // התחלת המשחק והוספת אנימציה לכפתור ברירת המחדל
+        addBlinkAnimation();
+        });
+        
