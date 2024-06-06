@@ -284,31 +284,32 @@ select {
 
 
 /* עיצוב מותאם למסכים קטנים */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     h1 {
-        font-size: 24px; /* גודל הכותרת יהיה 24 פיקסלים */
+        font-size: 20px; /* גודל הכותרת יהיה 24 פיקסלים */
     }
     body {
         height: 100vh;
     }
 
     #playerName {
-        font-size: 16px; /* גודל שם השחקן יהיה 16 פיקסלים */
+        font-size: 14px; /* גודל שם השחקן יהיה 16 פיקסלים */
     }
 
     .game-board {
-        grid-template-columns: repeat(4, 30px); /* 3 עמודות ברוחב של 80 פיקסלים כל אחת */
-        grid-template-rows: repeat(2, 30px); /* 6 שורות בגובה של 80 פיקסלים כל אחת */
+        grid-template-columns: repeat(4, 30px); /* 4 עמודות ברוחב של 30 פיקסלים כל אחת */
+        grid-template-rows: repeat(2, 30px); /* 2 שורות בגובה של 30 פיקסלים כל אחת */
     }
 
     .card {
-        width: 30px; /* רוחב כרטיס 80 פיקסלים */
-        height: 30px; /* גובה כרטיס 80 פיקסלים */
+        width: 30px; /* רוחב כרטיס 30 פיקסלים */
+        height: 30px; /* גובה כרטיס 30 פיקסלים */
         font-size: 1.5rem; /* גודל הגופן יהיה 1.5 פעמים רגיל */
     }
 
     #timer {
         font-size: 1.5rem; /* גודל השעון יהיה 1.5 פעמים רגיל */
+        padding: 6px;
     }
 
     .reset-btn {
@@ -333,7 +334,7 @@ select {
     }
 
     #scoreBtn {
-        font-size: 16px; /* גודל הגופן יהיה 16 פיקסלים */
+        font-size: 14px; /* גודל הגופן יהיה 16 פיקסלים */
         padding: 5px; /* ריפוד הכפתור בפנים 5 פיקסלים */
     }
 }
