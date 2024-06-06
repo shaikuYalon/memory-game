@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/landing.css">
+    <title>משחק זיכרון</title>
+</head>
+<body>
+    <header>
+        <h1 id="header">משחק זיכרון</h1>
+        <img src="../image.png" alt="תיאור תמונת הלוגו" class="logo">
+    </header>
+    
+    <!-- תיבת ההרשמה -->
+    <div class="containerSignUp">
+        <h2>הרשמה</h2>
+        <!-- שדה להזנת שם משתמש -->
+        <input type="text" id="signupUsername" placeholder="שם משתמש" required>
+        <!-- שדה להזנת שם פרטי -->
+        <input type="text" id="signupFirstName" placeholder="שם פרטי" required>
+        <!-- שדה להזנת שם משפחה -->
+        <input type="text" id="signupLastName" placeholder="שם משפחה" required>
+        <!-- שדה להזנת סיסמה -->
+        <input type="password" id="signupPassword" placeholder="סיסמה" required>
+        <!-- כפתור הרשמה -->
+        <button id="signUpBtn">הרשמה</button>
+        <!-- כפתור מעבר לטופס כניסה -->
+        <button id="showLoginBtn">כניסה</button>
+        <!-- מקום להודעות מערכת בתהליך ההרשמה -->
+        <p id="signupMessage"></p>
+    </div>
+    <!-- תיבת הכניסה -->
+    <div class="containerLogin">
+        <h2>כניסה</h2>
+        <!-- שדה להזנת שם משתמש -->
+        <input type="text" id="loginUsername" placeholder="שם משתמש" required>
+        <!-- שדה להזנת סיסמה -->
+        <input type="password" id="loginPassword" placeholder="סיסמה" required>
+        <!-- כפתור כניסה -->
+        <button id="loginBtn">כניסה</button>
+        <!-- כפתור מעבר לטופס הרשמה -->
+        <button id="showSignUpBtn">הרשמה</button>
+        <!-- מקום להודעות מערכת בתהליך הכניסה -->
+        <p id="loginMessage"></p>
+    </div>
+    
+    <!-- החלק החדש של הפוטר -->
+    <footer>
+        <p><a href="https://wa.me/972586744998" target="_blank">
+            <img src="../pngwing.com.png" alt="WhatsApp Icon" width="24" height="24">
+            צור קשר ב-WhatsApp
+        </a></p>
+    </footer>
+    
+    <!-- קישור חזרה לעמוד הבית -->
+    <a id="homeBtn" href="index.html">חזרה לעמוד הבית</a>
+
+    <script src="../js/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* קישור חזרה לעמוד הבית */
+#homeBtn {
+    text-decoration: none; /* ללא קו תחתון */
+    color: #09057c; /* צבע טקסט */
+    position: fixed; /* מיקום קבוע במסך */
+    bottom: 10px; /* מרווח מתחת לתוכן */
+    left: 10px; /* מרווח משמאל לתוכן */
+    font-size: 18px; /* גודל טקסט */
+    transition: color 0.2s; /* הפעלת אנימציה על הצבע במשך 0.2 שניות */
+}
+
+#homeBtn:hover {
+    color: red; /* שינוי צבע הטקסט כאשר מרחפים מעליו */
+}
+
+/* מאפס את מרווחי ברירת המחדל של ה-body */
+body {
+    margin: 0; /* ביטול מרווחים ברירת מחדל */
+    padding: 0; /* ביטול ריווחים ברירת מחדל */
+    height: 100vh; /* גובה הגוף 100% מגובה החלון */
+    display: flex; /* הצגת תכני הגוף כ-flexbox */
+    justify-content: center; /* יישור תכני הגוף למרכז אופקית */
+    align-items: center; /* יישור תכני הגוף למרכז אנכית */
+    background-image: url(../istockphoto-1282646295-1024x1024.jpg); /* הגדרת תמונת הרקע */
+    background-size: cover; /* כיסוי כל השטח עם תמונת הרקע */
+    background-position: center; /* מיקום תמונת הרקע במרכז */
+    background-repeat: no-repeat; /* מניעת חזרה של תמונת הרקע */
+    font-family: Arial, sans-serif; /* הגדרת משפחת הגופנים */
+}
+
+/* הגדרות תיבות ההרשמה והכניסה */
+.containerSignUp, .containerLogin {
+    background: rgba(222, 247, 253, 0.3); /* רקע שקוף למחצה */
+    padding: 10px; /* ריווח פנימי של 10 פיקסלים */
+    border-radius: 10px; /* פינות מעוגלות */
+    text-align: center; /* יישור טקסט למרכז */
+    max-width: 200px; /* רוחב מקסימלי של 200 פיקסלים */
+    width: auto; /* רוחב אוטומטי */
+    display: none; /* הסתרת התיבה כברירת מחדל */
+}
+
+/* הצגת תיבת הכניסה כברירת מחדל */
+.containerLogin {
+    display: block; /* הצגת תיבת הכניסה */
+}
+
+/* הגדרת מאפיינים להודעות */
+#message {
+    word-wrap: break-word; /* גלישת מילים אם המילה ארוכה מדי */
+    white-space: pre-wrap; /* שימור רווחים ושבירות שורות */
+    max-width: 100%; /* רוחב מקסימלי של 100% */
+}
+
+/* הגדרות לשדות הטקסט */
+input {
+    display: block; /* הצגת השדה כבלוק */
+    width: 80%; /* רוחב של 80% */
+    margin: 10px auto; /* מרווח פנימי של 10 פיקסלים ואמצעי */
+    padding: 10px; /* ריפוד פנימי של 10 פיקסלים */
+    border: 1px solid #ccc; /* מסגרת של 1 פיקסל בצבע אפור בהיר */
+    border-radius: 5px; /* פינות מעוגלות */
+}
+
+/* הגדרות לכפתורים */
+button {
+    padding: 10px 20px; /* ריפוד פנימי של 10 פיקסלים אנכית ו-20 פיקסלים אופקית */
+    border: none; /* ללא מסגרת */
+    border-radius: 5px; /* פינות מעוגלות */
+    background: #6bb9be; /* רקע בצבע טורקיז */
+    color: white; /* טקסט בצבע לבן */
+    cursor: pointer; /* הצגת סמן יד */
+}
+
+/* הגדרות לכפתורים במצב ריחוף */
+button:hover {
+    background: #5aafa2; /* שינוי צבע הרקע לריחוף */
+}
+
+header h1 {
+    color: rgb(34, 151, 181); /* צבע הטקסט */
+    margin: 0; /* ביטול מרווחים ברירת מחדל */
+    padding: 10px; /* ריווח פנימי של 10 פיקסלים */
+    position: absolute; /* מיקום מוחלט */
+    top: 20px; /* צמוד לחלק העליון של הדף */
+    left: 50%; /* ממרכז את הכותרת אופקית */
+    transform: translateX(-50%); /* מתקן את המיקום להשלמת המרכזיות */
+    font-size: 50px; /* גודל הגופן */
+}
+
+/* הגדרות לתמונת הלוגו */
+.logo {
+    position: absolute; /* מיקום מוחלט */
+    top: 10px; /* מרווח של 10 פיקסלים מהחלק העליון */
+    left: 10px; /* מרווח של 10 פיקסלים מהחלק השמאלי */
+    height: 100px; /* גובה של 100 פיקסלים */
+    width: 100px; /* רוחב של 100 פיקסלים */
+    margin-bottom: 10px; /* מרווח של 10 פיקסלים בתחתית */
+    border-radius: 100px; /* תמונה עגולה */
+}
+
+/* הסתרת לוח התוצאות */
+#leaderboard {
+    display: none; /* הסתרת לוח התוצאות */
+}
+
+footer {
+    position: absolute; /* מיקום מוחלט */
+    bottom: 0; /* מרווח של 0 מהחלק התחתון */
+    width: 100%; /* רוחב של 100% */
+    background-color: #8bdee0; /* צבע רקע */
+    text-align: center; /* יישור טקסט למרכז */
+    padding: 10px; /* ריווח פנימי של 10 פיקסלים */
+}
+
+footer p {
+    margin: 0; /* ביטול מרווחים ברירת מחדל */
+}
+
+footer a {
+    color: #007bff; /* צבע הקישור */
+    text-decoration: none; /* ללא קו תחתון */
+}
+
+footer a:hover {
+    text-decoration: underline; /* קו תחתון במצב ריחוף */
+}

@@ -1,0 +1,336 @@
+body {
+    font-family: Arial, sans-serif; /* הגדרת גופן הדף */
+    text-align: center; /* יישור תוכן למרכז */
+    background-color: #ffffff; /* צבע רקע לבן */
+    background-image: url(../Default_Black_background_image_with_stars_3.jpg); /* תמונת רקע */
+    background-size: cover; /* התאמת גודל התמונה לכיסוי מלא של הרקע */
+    background-position: center; /* מיקום מרכזי לתמונה */
+    background-repeat: no-repeat; /* מניעת חזרה של התמונה */
+    margin: 0; /* הסרת מרווחים חיצוניים */
+    padding: 0; /* הסרת רווחים פנימיים */
+}
+
+header {
+    margin-bottom: 20px; /* מרווח תחתון של 20 פיקסלים */
+}
+
+h1 {
+    color: white; /* צבע כותרת לבן */
+}
+
+#timer {
+    font-size: 2rem; /* גודל גופן 2 רם (יחסית לגודל הבסיס) */
+    margin-bottom: 20px; /* מרווח תחתון של 20 פיקסלים */
+    color: #ff0000; /* צבע אדום לטיימר */
+}
+
+.score-board {
+    font-size: 1.5rem; /* גודל גופן 1.5 רם */
+    margin: 20px; /* מרווח מסביב של 20 פיקסלים */
+    color: white; /* צבע לבן */
+}
+
+#gameContainer {
+    position: relative; /* מיקום יחסי */
+    padding: 20px; /* ריפוד פנימי של 20 פיקסלים */
+}
+
+.game-board {
+    display: grid; /* תצוגת רשת */
+    grid-template-columns: repeat(6, 100px); /* שישה עמודות ברוחב 100 פיקסלים */
+    grid-template-rows: repeat(3, 100px); /* שלושה שורות בגובה 100 פיקסלים */
+    gap: 10px; /* רווח בין תאים של 10 פיקסלים */
+    justify-content: center; /* יישור למרכז */
+    margin: 20px auto; /* מרווח של 20 פיקסלים מכל צד ומיקום במרכז */
+}
+
+.card {
+    width: 100px; /* רוחב כרטיס 100 פיקסלים */
+    height: 100px; /* גובה כרטיס 100 פיקסלים */
+    border: 1px solid orangered; /* מסגרת בצבע כתום-אדום */
+    border-radius: 8px; /* פינות מעוגלות ברדיוס 8 פיקסלים */
+    display: flex; /* תצוגת פלקס */
+    align-items: center; /* יישור אנכי למרכז */
+    justify-content: center; /* יישור אופקי למרכז */
+    font-size: 2rem; /* גודל גופן 2 רם */
+    cursor: pointer; /* סמן יד בעת מעבר על הכרטיס */
+    transition: transform 0.2s; /* שינוי חלק ב-0.2 שניות */
+    background-image: url('../Default_einstein_2.jpg'); /* תמונת רקע לכרטיס */
+    background-size: cover; /* כיסוי מלא לתמונה */
+    background-position: center; /* מיקום מרכזי לתמונה */
+}
+
+.card.flipped {
+    background-color: #368fb1; /* צבע רקע לכרטיס הפוך */
+    transform: rotateY(180deg); /* סיבוב של 180 מעלות בציר Y */
+}
+
+.card.matched {
+    background-color: #065657; /* צבע רקע לכרטיסים תואמים */
+    cursor: default; /* סמן רגיל (ללא פעולה) */
+}
+
+.reset-btn {
+    padding: 10px 20px; /* ריפוד פנימי של 10 פיקסלים אנכית ו-20 פיקסלים אופקית */
+    font-size: 16px; /* גודל גופן 16 פיקסלים */
+    margin-top: 20px; /* מרווח עליון של 20 פיקסלים */
+    cursor: pointer; /* סמן יד */
+    background-color: orange; /* צבע רקע כתום */
+}
+
+#difficulty {
+    background-color: orange; /* צבע רקע כתום */
+    width: 80px; /* רוחב של 80 פיקסלים */
+    height: 20px; /* גובה של 20 פיקסלים */
+    margin: auto; /* מיקום במרכז */
+    cursor: pointer; /* סמן יד */
+}
+
+label {
+    color: rgb(4, 232, 4); /* צבע ירוק לכיתוב */
+}
+
+select {
+    border-radius: 5px; /* פינות מעוגלות ברדיוס 5 פיקסלים */
+    text-align: center; /* יישור למרכז */
+}
+
+.logo {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 10px; /* מיקום עליון 10 פיקסלים */
+    left: 10px; /* מיקום שמאלי 10 פיקסלים */
+    height: 100px; /* גובה 100 פיקסלים */
+    width: 100px; /* רוחב 100 פיקסלים */
+    margin-bottom: 10px; /* מרווח תחתון של 10 פיקסלים */
+    border-radius: 100px; /* פינות מעוגלות ברדיוס 100 פיקסלים */
+}
+
+#scoreBoard {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 10px; /* מיקום עליון 10 פיקסלים */
+    right: 10px; /* מיקום ימני 10 פיקסלים */
+    background-color: rgb(242, 182, 69); /* צבע רקע כתום בהיר */
+    padding: 10px; /* ריפוד פנימי של 10 פיקסלים */
+    border-radius: 5px; /* פינות מעוגלות ברדיוס 5 פיקסלים */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* הצללה קלה */
+}
+
+#scoreBtn {
+    padding: 10px; /* ריפוד פנימי של 10 פיקסלים */
+    font-size: 20px; /* גודל גופן 20 פיקסלים */
+    background-color: black; /* צבע רקע שחור */
+    color: orange; /* צבע טקסט כתום */
+    border: none; /* ללא מסגרת */
+    border-radius: 5px; /* פינות מעוגלות ברדיוס 5 פיקסלים */
+    cursor: pointer; /* סמן יד */
+}
+
+#scoreBtn:hover {
+    background-color: #969e97; /* צבע רקע בהיר יותר בעת ריחוף */
+}
+
+#scoreContent {
+    display: none; /* הסתרת התוכן כברירת מחדל */
+    color: white; /* צבע טקסט לבן */
+    font-size: 1rem; /* גודל גופן 1 רם */
+    margin-top: 10px; /* מרווח עליון של 10 פיקסלים */
+    text-align: right; /* יישור לימין */
+}
+
+#scoreContent p {
+    margin: 5px 0; /* מרווח עליון ותחתון של 5 פיקסלים */
+    padding-right: 10px; /* ריפוד פנימי ימני של 10 פיקסלים */
+}
+
+#playerName {
+    color: yellow; /* צבע טקסט צהוב */
+    font-size: 20px; /* גודל גופן 20 פיקסלים */
+    font-weight: bold; /* טקסט מודגש */
+    margin-top: 10px; /* מרווח עליון של 10 פיקסלים */
+}
+
+/* סגנונות למודל ההוראות */
+.modal {
+    display: none; /* הסתרה כברירת מחדל */
+    position: fixed; /* מיקום קבוע */
+    z-index: 1; /* ז-אינדקס גבוה */
+    left: 0; /* מיקום שמאלי 0 */
+    top: 0; /* מיקום עליון 0 */
+    width: 100%; /* רוחב 100% */
+    height: 100%; /* גובה 100% */
+    overflow: auto; /* גלילה אוטומטית */
+    background-color: rgb(0,0,0); /* צבע רקע שחור */
+    background-color: rgba(0,0,0,0.4); /* שקיפות לרקע השחור */
+}
+
+.modal-content {
+    background-color: #fefefe; /* צבע רקע לבן */
+    margin: 15% auto; /* מרווח אוטומטי והזחה של 15% מלמעלה */
+    padding: 20px; /* ריפוד פנימי של 20 פיקסלים */
+    border: 1px solid #888; /* מסגרת בצבע אפור בהיר */
+    width: 80%; /* רוחב של 80% */
+}
+
+.close {
+    color: #aaa; /* צבע טקסט אפור בהיר */
+    float: right; /* יישור לימין */
+    font-size: 28px; /* גודל גופן 28 פיקסלים */
+    font-weight: bold; /* טקסט מודגש */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* צבע טקסט שחור בעת ריחוף או פוקוס */
+    text-decoration: none; /* ללא קו תחתון */
+    cursor: pointer; /* סמן יד */
+}
+
+#homeBtn {
+    position: fixed; /* הכפתור יהיה במצב קבוע */
+    left: 10px; /* מרחק של 10 פיקסלים מהשוליים השמאליים */
+    bottom: 10px; /* מרחק של 10 פיקסלים מהשוליים התחתונים */
+    z-index: 999; /* מיקום על פני התוכן */
+    color: #ffffff; /* צבע הטקסט ללבן */
+}
+
+#scoreBtn:hover {
+    background-color: #969e97; /* שינוי צבע רקע בעת העטלף */
+}
+
+#scoreContent {
+    display: none; /* הסתרת התוכן */
+    color: black; /* צבע הטקסט לשחור */
+    font-size: 1rem; /* גודל הגופן */
+    margin-top: 10px; /* מרווח עליון של 10 פיקסלים */
+}
+
+#scoreContent p {
+    margin: 5px 0; /* מרווחים למעלה ולמטה של הפסקה */
+    transition: color 0.3s; /* אנימציה לשינוי הצבע */
+}
+
+#playerName {
+    color: yellow; /* צבע הטקסט לצהוב */
+    font-size: 20px; /* גודל הגופן */
+    font-weight: bold; /* הדגשת הטקסט */
+    margin-top: 10px; /* מרווח עליון של 10 פיקסלים */
+}
+
+#homeBtn {
+    position: fixed; /* הכפתור יהיה במצב קבוע */
+    left: 10px; /* מרחק של 10 פיקסלים מהשוליים השמאליים */
+    bottom: 10px; /* מרחק של 10 פיקסלים מהשוליים התחתונים */
+    z-index: 999; /* מיקום על פני התוכן */
+    color: #ffffff; /* צבע הטקסט ללבן */
+}
+
+/* סגנונות למודל ההוראות */
+.modal {
+    display: none; /* הסתרת המודל */
+    position: fixed; /* המודל יהיה במצב קבוע */
+    z-index: 1; /* מיקום על פני התוכן */
+    left: 0; /* מרחק מהצד השמאלי של העמוד */
+    top: 0; /* מרחק מהצד העליון של העמוד */
+    width: 100%; /* רוחב מקסימלי */
+    height: 100%; /* גובה מקסימלי */
+    overflow: auto; /* גלילה אוטומטית */
+    background-color: rgb(0,0,0); /* צבע רקע שחור */
+    background-color: rgba(0,0,0,0.4); /* שקיפות לרקע השחור */
+}
+
+.modal-content {
+    background-color: #dcad13; /* צבע רקע */
+    margin: 15% auto; /* מרווח מהמרכז */
+    padding: 20px; /* ריפוד פנימי */
+    border: 1px solid #888; /* מסגרת */
+    width: 70%; /* רוחב */
+    max-width: 400px; /* רוחב מרבי */
+}
+
+.close {
+    color: #aaa; /* צבע טקסט */
+    float: right; /* יישור לימין */
+    font-size: 28px; /* גודל טקסט */
+    font-weight: bold; /* הדגשת טקסט */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* צבע טקסט בעת הרחפה */
+    text-decoration: none; /* אין קו תחתון */
+    cursor: pointer; /* סמן יד */
+}
+
+#instructionsBtn {
+    background-color: orange; /* צבע רקע */
+    cursor: pointer; /* סמן יד */
+}
+
+#logoutBtn {
+    position: absolute; /* הכפתור יהיה במצב קבוע בקשתוף */
+    bottom: 10px; /* מרחק של 10 פיקסלים מהשוליים התחתונים */
+    right: 10px; /* מרחק של 10 פיקסלים מהשוליים הימניים */
+    padding: 10px 20px; /* ריפוד פנימי */
+    border: none; /* אין מסגרת */
+    border-radius: 5px; /* פינות מעוגלות */
+    background: #6bb9be; /* צבע רקע */
+    color: white; /* צבע טקסט */
+    cursor: pointer; /* סמן יד */
+}
+
+#logoutBtn:hover {
+    background: #5aafa2; /* שינוי צבע הרקע לריחוף */
+}
+
+
+/* עיצוב מותאם למסכים קטנים */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px; /* גודל הכותרת יהיה 24 פיקסלים */
+    }
+
+    #playerName {
+        font-size: 16px; /* גודל שם השחקן יהיה 16 פיקסלים */
+    }
+
+    .game-board {
+        grid-template-columns: repeat(3, 80px); /* 3 עמודות ברוחב של 80 פיקסלים כל אחת */
+        grid-template-rows: repeat(6, 80px); /* 6 שורות בגובה של 80 פיקסלים כל אחת */
+    }
+
+    .card {
+        width: 80px; /* רוחב כרטיס 80 פיקסלים */
+        height: 80px; /* גובה כרטיס 80 פיקסלים */
+        font-size: 1.5rem; /* גודל הגופן יהיה 1.5 פעמים רגיל */
+    }
+
+    #timer {
+        font-size: 1.5rem; /* גודל השעון יהיה 1.5 פעמים רגיל */
+    }
+
+    .reset-btn {
+        padding: 8px 16px; /* ריפוד הכפתור בפנים 8 פיקסלים, בחוץ 16 פיקסלים */
+        font-size: 14px; /* גודל הגופן יהיה 14 פיקסלים */
+    }
+
+    #difficulty {
+        width: 100px; /* רוחב התיבת בחירת רמת קושי 100 פיקסלים */
+        height: 25px; /* גובה התיבת בחירת רמת קושי 25 פיקסלים */
+    }
+
+    .logo {
+        height: 80px; /* גובה הלוגו יהיה 80 פיקסלים */
+        width: 80px; /* רוחב הלוגו יהיה 80 פיקסלים */
+    }
+
+    #scoreBoard {
+        padding: 5px; /* ריפוד הכפתורים בפנים 5 פיקסלים */
+        top: 5px; /* מרווח למעלה של הפסקה 5 פיקסלים */
+        right: 5px; /* מרווח לימין של הפסקה 5 פיקסלים */
+    }
+
+    #scoreBtn {
+        font-size: 16px; /* גודל הגופן יהיה 16 פיקסלים */
+        padding: 5px; /* ריפוד הכפתור בפנים 5 פיקסלים */
+    }
+}
