@@ -222,7 +222,8 @@ function checkMatch() {
                  // יצירת משתנה של הודעת ניצחון
     let message = document.createElement("p");
     message.textContent = "ניצחתם!";
-    message.style.color = "green";
+    message.style.color = "#47e2cb";
+    message.style.fontSize = "60px"
     document.getElementById("gameStatus").appendChild(message); // הוספת הודעת הניצחון ל-div עם id של gameStatus
     }
     } else { // במקרה שהקלפים אינם תואמים
