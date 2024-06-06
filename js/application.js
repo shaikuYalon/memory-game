@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // התחלת הטיימר למשחק
         startTimer(gameDuration);
     }
+    
 
     // פונקציה להפיכת קלף
     function flipCard() {
