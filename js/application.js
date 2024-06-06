@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let countdown;
     let currentEmojis = [];
     let gameDuration;
-    let gameActive = true; // משתנה חדש לבדיקת מצב המשחק
+    let gameActive = false;
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
             card.addEventListener("click", flipCard);
             gameBoard.appendChild(card);
         }
-        startTimer(gameDuration);
     }
 
     function flipCard() {
@@ -149,7 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 message.style.color = "#47e2cb";
                 message.style.fontSize = "60px";
                 document.getElementById("gameStatus").appendChild(message);
-                gameActive = false; // עדכון מצב המשחק כלא פעיל
+                gameActive = false;
+                addBlinkAnimation();
             }
         } else {
             card1.classList.remove("flipped");
@@ -176,7 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 message.textContent = "תם הזמן!";
                 message.style.color = "red";
                 document.getElementById("gameStatus").appendChild(message);
-                gameActive = false; // עדכון מצב המשחק כלא פעיל
+                gameActive = false;
+                addBlinkAnimation();
             }
         }, 1000);
     }
@@ -184,12 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function resetGame() {
         matchedCards = 0;
         flippedCards = [];
+        currentGamePoints = 0; 
         updateCurrentGameScore(currentGamePoints); 
         gameBoard.innerHTML = ""; 
         createBoard();
         let gameStatus = document.getElementById("gameStatus");
         gameStatus.innerHTML = ""; 
-        gameActive = true; // עדכון מצב המשחק כפעיל מחדש
+        gameActive = true; // עדכון מצב המשחק כפעיל כברירת מחדל לאחר התחלה מחדש
+        startTimer(gameDuration); // התחלת שעון העצר
+        removeBlinkAnimation(); // הסרת האנימציה כאשר המשחק מתחיל מחדש
     }
 
     resetBtn.addEventListener("click", () => {
@@ -207,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // פונקציית הניתוק
     function logout() {
         localStorage.removeItem('currentUser');
-        window.location.href = "login.html"; // הנחיית המשתמש חזרה לעמוד ההתחברות
+        window.location.href = "landing.html"; // הנחיית המשתמש חזרה לעמוד ההתחברות
     }
 
     document.getElementById('logoutBtn').addEventListener('click', logout);
@@ -229,4 +233,18 @@ document.addEventListener("DOMContentLoaded", () => {
             instructionsModal.style.display = 'none';
         }
     });
+
+    // פונקציה להוספת אנימציה לכפתור
+    function addBlinkAnimation() {
+        resetBtn.classList.add("blink");
+    }
+
+    // פונקציה להסרת אנימציה מהכפתור
+    function removeBlinkAnimation() {
+        resetBtn.classList.remove("blink");
+    }
+
+    // התחלת המשחק והוספת אנימציה לכפתור ברירת המחדל
+    addBlinkAnimation();
 });
+
