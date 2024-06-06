@@ -288,19 +288,22 @@ select {
     h1 {
         font-size: 24px; /* גודל הכותרת יהיה 24 פיקסלים */
     }
+    body {
+        height: 100vh;
+    }
 
     #playerName {
         font-size: 16px; /* גודל שם השחקן יהיה 16 פיקסלים */
     }
 
     .game-board {
-        grid-template-columns: repeat(3, 80px); /* 3 עמודות ברוחב של 80 פיקסלים כל אחת */
-        grid-template-rows: repeat(6, 80px); /* 6 שורות בגובה של 80 פיקסלים כל אחת */
+        grid-template-columns: repeat(4, 30px); /* 3 עמודות ברוחב של 80 פיקסלים כל אחת */
+        grid-template-rows: repeat(2, 30px); /* 6 שורות בגובה של 80 פיקסלים כל אחת */
     }
 
     .card {
-        width: 80px; /* רוחב כרטיס 80 פיקסלים */
-        height: 80px; /* גובה כרטיס 80 פיקסלים */
+        width: 30px; /* רוחב כרטיס 80 פיקסלים */
+        height: 30px; /* גובה כרטיס 80 פיקסלים */
         font-size: 1.5rem; /* גודל הגופן יהיה 1.5 פעמים רגיל */
     }
 
