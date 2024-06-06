@@ -6,14 +6,9 @@ body {
     background-size: cover; /* התאמת גודל התמונה לכיסוי מלא של הרקע */
     background-position: center; /* מיקום מרכזי לתמונה */
     background-repeat: no-repeat; /* מניעת חזרה של התמונה */
-    background-attachment: fixed; /* קיבוע תמונת הרקע */
-    width: 100vw; /* רוחב 100% של viewport */
-    height: 100vh; /* גובה 100% של viewport */
     margin: 0; /* הסרת מרווחים חיצוניים */
     padding: 0; /* הסרת רווחים פנימיים */
-    overflow: hidden; /* מניעת גלילה */
 }
-
 
 header {
     margin-bottom: 20px; /* מרווח תחתון של 20 פיקסלים */
@@ -287,22 +282,6 @@ select {
     background: #5aafa2; /* שינוי צבע הרקע לריחוף */
 }
 
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.blink {
-    animation: blink 1s infinite;
-}
-
 
 /* עיצוב מותאם למסכים קטנים */
 @media (max-width: 500px) {
@@ -314,7 +293,7 @@ select {
     }
 
     #playerName {
-        font-size: 14px; /* גודל שם השחקן יהיה 16 פיקסלים */
+        font-size: 12px; /* גודל שם השחקן יהיה 16 פיקסלים */
     }
 
     .game-board {
