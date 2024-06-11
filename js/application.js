@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => { 
-    const emojisEasy = ['🥝', '🥝', '🍉', '🍉', '🍇', '🍇', '🍌', '🍌', '🍒', '🍒', '🍓', '🍓', '🍐', '🍐', '🍎', '🍎', '🥥', '🥥'];
+    const emojisEasy = ['🥝', '🥝']//, '🍉', '🍉', '🍇', '🍇', '🍌', '🍌', '🍒', '🍒', '🍓', '🍓', '🍐', '🍐', '🍎', '🍎', '🥥', '🥥'];
     const emojisMedium = [...emojisEasy, '🍍', '🍍', '🍋', '🍋', '🍏', '🍏', '🍈', '🍈', '🍑', '🍑', '🥭', '🥭'];
     const emojisHard = [...emojisMedium, '🍅', '🍅', '🍆', '🍆', '🍊', '🍊', '🌽', '🌽', '🍠', '🍠', '🍯', '🍯', '🍞', '🍞', '🍳', '🍳', '🥓', '🥓'];
 
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function resetGame() {
         matchedCards = 0;
         flippedCards = [];
-        currentGamePoints = 0; 
+        
         updateCurrentGameScore(currentGamePoints); 
         gameBoard.innerHTML = ""; 
         createBoard();

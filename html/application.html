@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8"> <!-- הגדרת קידוד התווים לדף -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- התאמת התצוגה למכשירים שונים -->
-    <title>Memory Game</title> <!-- כותרת הדף -->
-    <link rel="stylesheet" href="../css/application.css"> <!-- קישור לקובץ CSS חיצוני -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="../css/application.css">
 </head>
 <body>
+    <script>
+        // בדיקה אם יש משתמש מחובר
+        const currentUser = localStorage.getItem('currentUser');
+        if (!currentUser) {
+            // אם אין משתמש מחובר, מפנים לדף הכניסה
+            window.location.href = "landing.html";
+        }
+    </script>
     <!-- תצוגת שם השחקן הנוכחי וניקוד נוכחי -->
     <div id="playerName">שחקן נוכחי:<span id="currentPlayer"></span> | ניקוד נוכחי: 
         <span id="currentPoints">0</span></div>
 
     <header>
-        <h1>ברוכים הבאים!</h1> <!-- כותרת הדף -->
+        <h1>ברוכים הבאים!</h1>
         <div id="scoreBoard">
-            <button id="scoreBtn">מי בראש?!</button> <!-- כפתור להצגת לוח תוצאות -->
+            <button id="scoreBtn">מי בראש?!</button>
             <div id="scoreContent" style="display: none;">
-                <p id="firstPlace">מקום ראשון:</p> <!-- תצוגת מקום ראשון -->
-                <p id="secondPlace">מקום שני:</p> <!-- תצוגת מקום שני -->
-                <p id="thirdPlace">מקום שלישי:</p> <!-- תצוגת מקום שלישי -->
+                <p id="firstPlace">מקום ראשון:</p>
+                <p id="secondPlace">מקום שני:</p>
+                <p id="thirdPlace">מקום שלישי:</p>
             </div>
         </div>
     </header>
     <footer>
-        <a href="../index.html" id="homeBtn">חזור לדף הבית</a> <!-- קישור חזרה לעמוד הבית -->
-        <button id="logoutBtn">ניתוק</button> <!-- כפתור לניתוק המשתמש -->
+        <a href="../index.html" id="homeBtn">חזור לדף הבית</a>
+        <button id="logoutBtn">ניתוק</button>
     </footer>
     
-    <img src="../image.png" alt="Game Logo" class="logo"> <!-- לוגו המשחק -->
-    <div id="gameStatus"></div> <!-- אלמנט לתצוגת מצב המשחק -->
-    <div id="leaderboardList" style="display: none;"></div> <!-- אלמנט לתצוגת לוח תוצאות, מוסתר כברירת מחדל -->
-    <label for="difficulty">בחר רמת קושי</label> <!-- תווית לבחירת רמת קושי -->
+    <img src="../image.png" alt="Game Logo" class="logo">
+    <div id="gameStatus"></div>
+    <div id="leaderboardList" style="display: none;"></div>
+    <label for="difficulty">בחר רמת קושי</label>
     <div id="gameContainer">
         <div id="controls">
             <select id="difficulty">
-                <option value="easy">קל</option> <!-- אפשרות לרמת קושי קלה -->
-                <option value="medium">בינוני</option> <!-- אפשרות לרמת קושי בינונית -->
-                <option value="hard">קשה</option> <!-- אפשרות לרמת קושי קשה -->
+                <option value="easy">קל</option>
+                <option value="medium">בינוני</option>
+                <option value="hard">קשה</option>
             </select>
         </div>
-        <div id="timer">02:00</div> <!-- תצוגת שעון עצר -->
-        <div id="gameBoard" class="game-board easy"></div> <!-- לוח המשחק, ברירת מחדל רמת קושי קלה -->
-        <button id="resetBtn" class="reset-btn">התחל משחק חדש</button> <!-- כפתור לאיפוס המשחק והתחלת משחק חדש -->
+        <div id="timer">02:00</div>
+        <div id="gameBoard" class="game-board easy"></div>
+        <button id="resetBtn" class="reset-btn">התחל משחק חדש</button>
     </div>
-    <div id="messageBox" class="message-box"></div> <!-- אלמנט להודעות -->
-    <button id="instructionsBtn" class="instructions-btn">הוראות משחק</button> <!-- כפתור להצגת הוראות המשחק -->
+    <div id="messageBox" class="message-box"></div>
+    <button id="instructionsBtn" class="instructions-btn">הוראות משחק</button>
     <div id="instructionsModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span> <!-- כפתור סגירה של החלון המודאלי -->
-            <h2>הוראות המשחק</h2> <!-- כותרת הוראות המשחק -->
-            <p>ברוכים הבאים למשחק הזיכרון!</p> <!-- טקסט ברוכים הבאים -->
+            <span class="close">&times;</span>
+            <h2>הוראות המשחק</h2>
+            <p>ברוכים הבאים למשחק הזיכרון!</p>
             <ul>
-                <li>רמה קלה: סיים את המשחק תוך 2 דקות ותקבל 20 נקודות.</li> <!-- הוראות לרמה קלה -->
-                <li>רמה בינונית: סיים את המשחק תוך 3.5 דקות ותקבל 30 נקודות.</li> <!-- הוראות לרמה בינונית -->
-                <li>רמה קשה: סיים את המשחק תוך 5 דקות ותקבל 45 נקודות.</li> <!-- הוראות לרמה קשה -->
-                <p>לא סיימת בזמן? יצאת לוזר 😉</p> <!-- הודעה אם לא סיימת בזמן -->
+                <li>רמה קלה: סיים את המשחק תוך 2 דקות ותקבל 20 נקודות.</li>
+                <li>רמה בינונית: סיים את המשחק תוך 3.5 דקות ותקבל 30 נקודות.</li>
+                <li>רמה קשה: סיים את המשחק תוך 5 דקות ותקבל 45 נקודות.</li>
+                <p>לא סיימת בזמן? יצאת לוזר 😉</p>
             </ul>
         </div>
     </div>
-    <script type="module" src="../js/application.js"></script> <!-- קישור לקובץ JavaScript חיצוני -->
+    <script type="module" src="../js/application.js"></script>
 </body>
 </html>

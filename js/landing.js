@@ -4,10 +4,10 @@ const users = JSON.parse(localStorage.getItem('users')) || [];
 // פונקציה לרישום משתמש חדש
 function signUp() {
     // קבלת ערכי השדות מתוך הטופס
-    const username = document.getElementById('signupUsername').value;
-    const lastname = document.getElementById('signupLastName').value;
-    const firstName = document.getElementById('signupFirstName').value;
-    const password = document.getElementById('signupPassword').value;
+    const username = document.getElementById('signupUsername').value.trim();
+    const lastname = document.getElementById('signupLastName').value.trim();
+    const firstName = document.getElementById('signupFirstName').value.trim();
+    const password = document.getElementById('signupPassword').value.trim();
     // אלמנט להצגת הודעות
     const message = document.getElementById('signupMessage');
 
@@ -48,18 +48,25 @@ function signUp() {
     users.push({ username, lastname, password, firstName, points });
     // שמירת מערך המשתמשים ב-localStorage
     localStorage.setItem('users', JSON.stringify(users));
-    // הודעה על רישום מוצלח
+
+    // הודעה על רישום מוצלח וניקוי טופס
     message.textContent = 'הרישום בוצע בהצלחה';
     message.style.color = 'green';
+    document.getElementById('signupUsername').value = '';
+    document.getElementById('signupLastName').value = '';
+    document.getElementById('signupFirstName').value = '';
+    document.getElementById('signupPassword').value = '';
+
     // מעבר לעמוד האפליקציה לאחר רישום מוצלח
+    localStorage.setItem('currentUser', username);
     return window.location.href = "application.html";
 }
 
 // פונקציה לכניסת משתמש קיים
 function login() {
     // קבלת ערכי השדות מתוך הטופס
-    const username = document.getElementById('loginUsername').value;
-    const password = document.getElementById('loginPassword').value;
+    const username = document.getElementById('loginUsername').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
     // אלמנט להצגת הודעות
     const message = document.getElementById('loginMessage');
 
@@ -78,6 +85,8 @@ function login() {
         localStorage.setItem('currentUser', username);
         message.textContent = 'התגעגענו';
         message.style.color = 'green';
+        document.getElementById('loginUsername').value = '';
+        document.getElementById('loginPassword').value = '';
         return window.location.href = "application.html";
     } else {
         // הודעה על שם משתמש או סיסמה לא תקינים
@@ -98,14 +107,17 @@ function showLogin() {
     document.querySelector('.containerLogin').style.display = 'block';
 }
 
-// קישור פונקציות לאירועים המתאימים
-document.getElementById('signUpBtn').addEventListener('click', signUp);
-document.getElementById('loginBtn').addEventListener('click', login);
-document.getElementById('showSignUpBtn').addEventListener('click', showSignUp);
-document.getElementById('showLoginBtn').addEventListener('click', showLogin);
-
 document.addEventListener('DOMContentLoaded', () => {
+    // קישור פונקציות לאירועים המתאימים לאחר טעינת הדף
+    document.getElementById('signUpBtn').addEventListener('click', signUp);
+    document.getElementById('loginBtn').addEventListener('click', login);
+    document.getElementById('showSignUpBtn').addEventListener('click', showSignUp);
+    document.getElementById('showLoginBtn').addEventListener('click', showLogin);
     document.getElementById('homeBtn').addEventListener('click', () => {
         window.location.href = 'index.html'; // ניתוב לעמוד הבית
     });
+
+    // הצגת טופס הכניסה כברירת מחדל
+    showLogin();
 });
+
